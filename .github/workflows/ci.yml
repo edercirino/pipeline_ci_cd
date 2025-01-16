@@ -18,9 +18,9 @@ jobs:
         ports:
           - 5432:5432
         env:
+          POSGRES_DB: pipeline_ci_cd_development
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSGRES_DB: pipeline_ci_cd_development
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
