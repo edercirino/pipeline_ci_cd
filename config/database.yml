@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: your_app_development
+  database: pipeline_ci_cd_development
 
 test:
   <<: *default
-  database: your_app_test
+  database: pipeline_ci_cd_test
 
 production:
   <<: *default
-  database: your_app_production
-  username: your_production_username
+  database: pipeline_ci_cd_production
+  username: pipeline_ci_cd
   password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
