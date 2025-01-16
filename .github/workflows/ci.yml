@@ -20,7 +20,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSGRES_DB: test_db
+          POSGRES_DB: pipeline_ci_cd_development
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -50,7 +50,7 @@ jobs:
     - name: Set up database
       env:
         RAILS_ENV: test
-        DATABASE_URL: postgres://postgres:password@localhost:5432/pipeline_ci_cd
+        DATABASE_URL: postgres://postgres:password@localhost:5432/pipeline_ci_cd_development
       run:
         bin/rails db:create db:schema:load
 
