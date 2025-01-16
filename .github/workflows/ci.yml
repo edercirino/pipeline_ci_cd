@@ -42,7 +42,7 @@ jobs:
         node-versions: 12.22.9
 
     - name: Install dependencies
-      run: 
+      run: |
         gem install bundler
         bundler install
         yarn install --ignore-dependencies
