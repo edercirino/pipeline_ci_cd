@@ -18,7 +18,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSGRES_DB: pipeline_ci_cd_development
+          POSTGRES_DB: pipeline_ci_cd_development
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         options: >-
