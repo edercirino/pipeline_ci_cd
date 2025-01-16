@@ -19,8 +19,8 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_DB: pipeline_ci_cd_development
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres1
+          POSTGRES_PASSWORD: postgres1
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
