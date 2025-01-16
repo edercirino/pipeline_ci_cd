@@ -45,7 +45,7 @@ jobs:
       run:
         gem install bundler
         bundler install
-        yarn install --ignore-engines
+        yarn install --ignore-dependencies
 
     - name: Set up database
       env:
