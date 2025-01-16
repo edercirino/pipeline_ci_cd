@@ -39,7 +39,7 @@ jobs:
     - name: Install Node.js
       uses: actions/setup-node@v3
       with: POSTGRES_DB
-        node-versions: 12.22.9
+        node-version: 12.22.9
 
     - name: Install dependencies
       run: |
