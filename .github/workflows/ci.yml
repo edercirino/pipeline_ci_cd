@@ -19,8 +19,8 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_DB: pipeline_ci_cd_development
-          POSTGRES_USER: postgres1
-          POSTGRES_PASSWORD: postgres1
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -52,7 +52,7 @@ jobs:
         RAILS_ENV: development
         DATABASE_URL: postgres://postgres:password@postgres:5432/pipeline_ci_cd_development
       run:
-        bin/rails db:create db:schema:load
+        bin/rails db:create
 
     - name: Run tests
       env:
