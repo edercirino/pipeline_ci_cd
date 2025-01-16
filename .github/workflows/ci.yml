@@ -1,0 +1,61 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_requests:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs_on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: pguser
+          POSTGRES_PASSWORD: pguser
+          POSGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+    - name: Check out code
+      users: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2.2
+        bundler-cache: true
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-versions: 12.22.9
+
+    - name: Install dependencies
+      run:
+        gem install bundler
+        bundler install
+        yarn install --check-files
+
+    - name: Set up database
+      env:
+        RAILS_ENV: test
+        DATABASE_URL: pguser://pguser:password@localhost:5432/test_db
+      run:
+        bin/rails db:create db:schema:load
+
+    - name: Run tests
+      env:
+        RAILS_ENV: test
+      run:
+        bin/rails test
